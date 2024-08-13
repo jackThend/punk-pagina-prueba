@@ -1,0 +1,113 @@
+/* Estilo general del cuerpo */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Enlaces con un efecto de glitch */
+a {
+    color: #ff00ff;
+    text-decoration: none;
+    position: relative;
+}
+
+a:hover::after {
+    content: attr(href);
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    color: #00ff00;
+    z-index: -1;
+}
+
+/* Estilo de los títulos */
+h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #ff0000;
+    text-shadow: 2px 2px #000000;
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ff0000;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff0000;
+    color: #000000;
+    transform: scale(1.1);
+}
+
+/* Estilo de las imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    filter: contrast(120%) brightness(80%);
+}
+
+/* Efecto de glitch para el texto */
+.glitch {
+    position: relative;
+    color: #ffffff;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+    animation: glitch-top 2s infinite linear alternate-reverse;
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-bottom 2s infinite linear alternate-reverse;
+    color: #00ff00;
+    z-index: -2;
+}
+
+@keyframes glitch-top {
+    0% {
+        clip: rect(42px, 9999px, 44px, 0);
+        transform: skew(0.02deg);
+    }
+    100% {
+        clip: rect(0, 9999px, 85px, 0);
+        transform: skew(0.02deg);
+    }
+}
+
+@keyframes glitch-bottom {
+    0% {
+        clip: rect(72px, 9999px, 85px, 0);
+        transform: skew(0.02deg);
+    }
+    100% {
+        clip: rect(0, 9999px, 44px, 0);
+        transform: skew(0.02deg);
+    }
+}
